@@ -1,0 +1,1695 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b5d">
+  <meta name="description" content="Laman web rasmi SK Abang Gesa, Tanjung Manis, Sarawak.">
+  <title>SK Abang Gesa | Laman Web Sekolah</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #123b5d;
+      --navy-dark: #0b2942;
+      --blue: #2563eb;
+      --green: #15966b;
+      --gold: #f4bd4e;
+      --ink: #172b3a;
+      --muted: #64748b;
+      --paper: #f5f8fc;
+      --white: #ffffff;
+      --line: #e2e8f0;
+      --danger: #b42318;
+      --shadow: 0 20px 60px rgba(18, 59, 93, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Nunito Sans", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    button, input { font: inherit; }
+
+    button { cursor: pointer; }
+
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid #f4bd4e;
+      outline-offset: 3px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .hidden { display: none !important; }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* HEADER */
+    .topbar {
+      background: var(--navy-dark);
+      color: #eaf4ff;
+      font-size: 12px;
+      padding: 9px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #1b527d, #0c2d48);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 7px 18px #123b5d2b;
+      border: 2px solid #f4bd4e;
+    }
+
+    .brand-name {
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: .3px;
+      line-height: 1.25;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav-links a:not(.btn):hover { color: var(--blue); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--navy);
+      box-shadow: 0 7px 16px #123b5d20;
+    }
+
+    .btn-primary:hover { background: #1c527c; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .btn-light {
+      background: #edf4fb;
+      color: var(--navy);
+    }
+
+    .btn-block { width: 100%; }
+
+    .menu-toggle {
+      display: none;
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 20px;
+    }
+
+    /* HERO */
+    .hero {
+      overflow: hidden;
+      position: relative;
+      color: white;
+      background:
+        radial-gradient(ellipse at 85% 20%, #2775a7 0, transparent 35%),
+        linear-gradient(120deg, #0b2942 0%, #123b5d 55%, #155778 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid #ffffff17;
+      border-radius: 50%;
+      right: -100px;
+      top: -160px;
+      box-shadow: 0 0 0 45px #ffffff08, 0 0 0 90px #ffffff05;
+    }
+
+    .hero-grid {
+      min-height: 510px;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      align-items: center;
+      gap: 42px;
+      padding-top: 58px;
+      padding-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff14;
+      border: 1px solid #ffffff28;
+      border-radius: 100px;
+      padding: 8px 13px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 61px);
+      line-height: 1.07;
+      letter-spacing: -1.8px;
+      margin: 22px 0 20px;
+      max-width: 670px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-description {
+      color: #d4e5f3;
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 570px;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-actions .btn { padding: 14px 20px; }
+
+    .hero-note {
+      color: #b9d0e1;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
+    .hero-visual {
+      min-height: 330px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .school-illustration {
+      width: min(100%, 430px);
+      aspect-ratio: 1 / .86;
+      border: 1px solid #ffffff2a;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #ffffff18, #ffffff07);
+      box-shadow: 0 28px 60px #061a2d55;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .illustration-sky {
+      height: 100%;
+      border-radius: 18px;
+      background: linear-gradient(#a6d9f3 0%, #e3f5fc 72%, #a4d39b 72%, #67a66e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sun {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      height: 43px;
+      width: 43px;
+      border-radius: 50%;
+      background: #ffdc80;
+      box-shadow: 0 0 35px #ffdc8080;
+    }
+
+    .cloud {
+      position: absolute;
+      width: 68px;
+      height: 18px;
+      background: #ffffffcf;
+      border-radius: 50px;
+      top: 48px;
+      left: 30px;
+    }
+
+    .cloud::before, .cloud::after {
+      content: "";
+      position: absolute;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 27px;
+      height: 27px;
+      left: 12px;
+      top: -12px;
+    }
+
+    .cloud::after {
+      width: 33px;
+      height: 33px;
+      right: 10px;
+      top: -16px;
+    }
+
+    .school-building {
+      position: absolute;
+      left: 12%;
+      bottom: 23%;
+      width: 76%;
+      height: 42%;
+      background: #f7f4e9;
+      border: 4px solid #ffffff;
+      box-shadow: 0 7px 0 #c7d2d5;
+    }
+
+    .school-roof {
+      position: absolute;
+      top: -25px;
+      left: -5%;
+      width: 110%;
+      height: 27px;
+      background: #cb654b;
+      clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%);
+    }
+
+    .school-sign {
+      position: absolute;
+      left: 50%;
+      top: 12px;
+      transform: translateX(-50%);
+      background: var(--navy);
+      color: white;
+      white-space: nowrap;
+      padding: 5px 12px;
+      font-size: 8px;
+      font-weight: 900;
+      border-radius: 3px;
+    }
+
+    .school-windows {
+      display: flex;
+      justify-content: space-around;
+      padding: 42px 10px 0;
+    }
+
+    .school-window {
+      width: 20%;
+      height: 40px;
+      background: #80c5e8;
+      border: 3px solid #ffffff;
+      box-shadow: inset 0 0 0 2px #4e8bad;
+    }
+
+    .school-door {
+      position: absolute;
+      width: 18%;
+      height: 45%;
+      bottom: 0;
+      left: 41%;
+      background: #a66a43;
+      border: 3px solid white;
+    }
+
+    .school-door::after {
+      content: "";
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffe5a0;
+    }
+
+    .path {
+      position: absolute;
+      bottom: -5%;
+      left: 35%;
+      width: 30%;
+      height: 29%;
+      background: #e7dfca;
+      clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+    }
+
+    .tree {
+      position: absolute;
+      bottom: 23%;
+      width: 13%;
+      height: 29%;
+      background: #8b5e3c;
+      border-radius: 5px;
+    }
+
+    .tree::before {
+      content: "";
+      position: absolute;
+      top: -22px;
+      left: -15px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #2f9367;
+    }
+
+    .tree-left { left: 3%; }
+    .tree-right { right: 3%; }
+
+    .floating-label {
+      position: absolute;
+      bottom: 18px;
+      left: -5px;
+      background: white;
+      color: var(--navy);
+      padding: 13px 17px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .floating-label .star {
+      background: #fff1c6;
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 19px;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+
+    .section-kicker {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1.7px;
+      font-weight: 900;
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 3vw, 37px);
+      color: var(--navy);
+      letter-spacing: -.8px;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 51px;
+      height: 51px;
+      display: grid;
+      place-items: center;
+      background: #eaf3ff;
+      border-radius: 15px;
+      font-size: 24px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      color: var(--navy);
+      margin: 20px 0 9px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* ACCOUNT SECTION */
+    .account-section {
+      padding: 76px 0;
+      background: #eaf1f8;
+      scroll-margin-top: 95px;
+    }
+
+    .account-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .account-copy h2 {
+      color: var(--navy);
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin: 14px 0;
+    }
+
+    .account-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .account-benefit {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      font-size: 13px;
+      font-weight: 800;
+      align-items: center;
+    }
+
+    .benefit-check {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--green);
+      background: #d8f5e9;
+    }
+
+    .auth-card {
+      background: white;
+      border: 1px solid #e1e8f0;
+      border-radius: 24px;
+      padding: clamp(22px, 4vw, 36px);
+      box-shadow: 0 22px 65px #123b5d12;
+      scroll-margin-top: 110px;
+    }
+
+    .auth-top {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .auth-logo {
+      width: 49px;
+      height: 49px;
+      margin: 0 auto 14px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .auth-top h3 {
+      color: var(--navy);
+      font-size: 24px;
+      margin: 0 0 7px;
+    }
+
+    .auth-top p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 22px;
+    }
+
+    .auth-tab {
+      padding: 11px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .auth-tab.active {
+      color: var(--navy);
+      background: white;
+      box-shadow: 0 2px 8px #0000000a;
+    }
+
+    .field { margin-bottom: 15px; }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      color: #334155;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .input-wrap { position: relative; }
+
+    .field input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d8e1eb;
+      background: white;
+      border-radius: 11px;
+      font-size: 13px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px #2563eb15;
+    }
+
+    .field input::placeholder { color: #a0aec0; }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .password-toggle + input { padding-right: 65px; }
+
+    .form-meta {
+      display: flex;
+      justify-content: flex-end;
+      margin: -2px 0 18px;
+      font-size: 12px;
+    }
+
+    .text-link {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: inherit;
+    }
+
+    .text-link:hover { text-decoration: underline; }
+
+    .auth-message {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .auth-message.show { display: block; }
+
+    .auth-message.error {
+      color: var(--danger);
+      background: #fff0ee;
+      border: 1px solid #f9d0cb;
+    }
+
+    .auth-message.success {
+      color: #087443;
+      background: #e9f9f0;
+      border: 1px solid #c6f0d8;
+    }
+
+    .auth-message.info {
+      color: #184b87;
+      background: #edf5ff;
+      border: 1px solid #cfe2ff;
+    }
+
+    .divider-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #94a3b8;
+      font-size: 11px;
+      margin: 20px 0;
+    }
+
+    .divider-label::before, .divider-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .google-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      font-weight: 900;
+      color: #4285f4;
+      background: white;
+    }
+
+    .auth-terms {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1.7;
+      margin-top: 18px;
+    }
+
+    .signed-in-panel {
+      text-align: center;
+      padding: 12px 0 0;
+    }
+
+    .user-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      background: #e5efff;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .user-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .signed-in-panel h3 {
+      color: var(--navy);
+      margin: 8px 0;
+    }
+
+    .signed-in-panel p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .account-note {
+      font-size: 11px;
+      color: var(--muted);
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: left;
+      line-height: 1.7;
+      margin: 18px 0;
+    }
+
+    /* CTA + FOOTER */
+    .cta { padding: 55px 0; }
+
+    .cta-box {
+      background: linear-gradient(120deg, #123b5d, #1c6280);
+      color: white;
+      padding: 38px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .cta-box h2 {
+      font-size: 25px;
+      margin: 0 0 8px;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: #d2e6f4;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer {
+      background: var(--navy-dark);
+      color: #d7e5f1;
+      padding: 30px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-title {
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .footer-small {
+      font-size: 11px;
+      line-height: 1.8;
+      color: #a9c0d2;
+      margin-top: 5px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: white;
+        border-bottom: 1px solid var(--line);
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-top: 50px;
+      }
+
+      .hero-copy { text-align: center; }
+      .hero-description { margin: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { min-height: 300px; }
+      .floating-label { left: 0; }
+
+      .account-layout { grid-template-columns: 1fr; gap: 28px; }
+      .account-copy { text-align: center; }
+      .account-benefit { justify-content: center; text-align: left; }
+      .auth-card { width: min(100%, 570px); margin: auto; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: min(100% - 28px, 1160px); }
+      .topbar-inner { justify-content: center; text-align: center; }
+      .nav { min-height: 72px; }
+      .brand-mark { width: 45px; height: 45px; border-radius: 13px; }
+      .brand-name { font-size: 14px; }
+      .brand-sub { font-size: 10px; }
+      .hero-grid { padding-top: 40px; padding-bottom: 45px; }
+      .hero h1 { letter-spacing: -1px; }
+      .hero-description { font-size: 14px; }
+      .hero-actions .btn { flex: 1 1 auto; }
+      .hero-visual { min-height: 245px; }
+      .school-illustration { padding: 12px; border-radius: 20px; }
+      .school-window { height: 30px; }
+      .school-windows { padding-top: 35px; }
+      .school-sign { font-size: 6px; }
+      .tree::before { width: 48px; height: 48px; left: -11px; top: -17px; }
+      .floating-label { font-size: 10px; padding: 9px 11px; }
+      .intro, .account-section { padding: 54px 0; }
+      .feature-grid { grid-template-columns: 1fr; gap: 12px; }
+      .feature-card { padding: 23px; }
+      .cta { padding: 35px 0; }
+      .cta-box { padding: 26px; flex-direction: column; align-items: flex-start; }
+      .cta-box h2 { font-size: 22px; }
+      .auth-card { padding: 23px 18px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>📍 96150 Tanjung Manis, Sarawak</span>
+      <span>Laman Web Sekolah · Fasa 1</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#utama" aria-label="SK Abang Gesa - Muka Depan">
+        <div class="brand-mark">AG</div>
+        <div>
+          <div class="brand-name">SK ABANG GESA</div>
+          <div class="brand-sub">Laman Web Sekolah</div>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+              aria-label="Buka menu" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#utama" data-close-menu>Utama</a>
+        <a href="#tentang" data-close-menu>Tentang Laman Ini</a>
+        <a href="#akaun" data-close-menu>Akaun Pengguna</a>
+        <button class="btn btn-primary" type="button" data-open-login>
+          Log Masuk ↗
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- MUKA DEPAN -->
+    <section class="hero" id="utama">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Warga SK Abang Gesa
+          </div>
+
+          <h1>Selamat Datang ke <span>SK Abang Gesa</span></h1>
+
+          <p class="hero-description">
+            Satu ruang digital untuk mengenali sekolah, mengikuti
+            perkembangan dan memudahkan perkongsian maklumat warga sekolah.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-gold" type="button" data-open-register>
+              ✦ Daftar Akaun
+            </button>
+            <button class="btn btn-outline" type="button" data-open-login>
+              Log Masuk →
+            </button>
+          </div>
+
+          <div class="hero-note">
+            Maklumat umum boleh dilihat oleh semua. Akaun diperlukan untuk
+            fungsi yang memerlukan pengesahan pengguna.
+          </div>
+        </div>
+
+        <!-- Ilustrasi sekolah CSS, tidak memerlukan fail gambar luar -->
+        <div class="hero-visual" aria-label="Ilustrasi bangunan sekolah">
+          <div class="school-illustration">
+            <div class="illustration-sky">
+              <div class="sun"></div>
+              <div class="cloud"></div>
+              <div class="tree tree-left"></div>
+              <div class="tree tree-right"></div>
+
+              <div class="school-building">
+                <div class="school-roof"></div>
+                <div class="school-sign">SK ABANG GESA</div>
+                <div class="school-windows">
+                  <div class="school-window"></div>
+                  <div class="school-window"></div>
+                  <div class="school-window"></div>
+                </div>
+                <div class="school-door"></div>
+              </div>
+              <div class="path"></div>
+            </div>
+          </div>
+          <div class="floating-label">
+            <span class="star">✦</span>
+            <span>Ilmu · Usaha · Kecemerlangan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENGENALAN -->
+    <section class="intro" id="tentang">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Portal Sekolah</div>
+          <h2>Satu laman, pelbagai maklumat</h2>
+          <p>
+            Laman web ini dibangunkan sebagai pusat maklumat digital
+            SK Abang Gesa. Kandungan akan ditambah secara berperingkat.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🏫</div>
+            <h3>Kenali Sekolah</h3>
+            <p>
+              Ruang untuk berkongsi identiti, latar belakang dan maklumat
+              sekolah. Kandungan terperinci akan ditambah dalam fasa seterusnya.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3>Maklumat Sekolah</h3>
+            <p>
+              Perancangan untuk takwim, jadual dan maklumat pengurusan
+              sekolah akan dibangunkan secara berperingkat.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Komuniti Sekolah</h3>
+            <p>
+              Ruang digital yang dirancang untuk menyokong perkongsian
+              maklumat antara warga sekolah dan komuniti.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGIN / DAFTAR -->
+    <section class="account-section" id="akaun">
+      <div class="container account-layout">
+        <div class="account-copy">
+          <div class="section-kicker">Akaun Pengguna</div>
+          <h2>Sertai komuniti digital SK Abang Gesa</h2>
+          <p>
+            Daftar menggunakan e-mel dan kata laluan atau akaun Google.
+            Selepas berjaya mendaftar, anda boleh terus log masuk.
+          </p>
+
+          <div class="account-benefit">
+            <span class="benefit-check">✓</span>
+            <span>Pendaftaran menggunakan e-mel atau Google</span>
+          </div>
+          <div class="account-benefit">
+            <span class="benefit-check">✓</span>
+            <span>Reka bentuk mesra telefon dan komputer</span>
+          </div>
+          <div class="account-benefit">
+            <span class="benefit-check">✓</span>
+            <span>Pengurusan sesi log masuk yang selamat</span>
+          </div>
+        </div>
+
+        <div class="auth-card" id="authCard">
+          <div class="auth-top">
+            <div class="auth-logo">AG</div>
+            <h3 id="authTitle">Selamat Datang</h3>
+            <p id="authSubtitle">Log masuk untuk meneruskan</p>
+          </div>
+
+          <div id="authMessage" class="auth-message" role="status"
+               aria-live="polite"></div>
+
+          <!-- BORANG PENGGUNA BELUM LOG MASUK -->
+          <div id="authForms">
+            <div class="auth-tabs" role="tablist" aria-label="Jenis akaun">
+              <button class="auth-tab active" id="loginTab" type="button"
+                      role="tab" aria-selected="true">Log Masuk</button>
+              <button class="auth-tab" id="registerTab" type="button"
+                      role="tab" aria-selected="false">Daftar Akaun</button>
+            </div>
+
+            <form id="authForm">
+              <div class="field">
+                <label for="email">Alamat e-mel</label>
+                <input id="email" type="email" autocomplete="email"
+                       placeholder="nama@contoh.com" required maxlength="254">
+              </div>
+
+              <div class="field">
+                <label for="password">Kata laluan</label>
+                <div class="input-wrap">
+                  <input id="password" type="password"
+                         autocomplete="current-password"
+                         placeholder="Masukkan kata laluan"
+                         required minlength="6" maxlength="128">
+                  <button type="button" class="password-toggle"
+                          id="togglePassword" aria-label="Papar kata laluan">
+                    Papar
+                  </button>
+                </div>
+              </div>
+
+              <div class="field hidden" id="confirmField">
+                <label for="confirmPassword">Sahkan kata laluan</label>
+                <input id="confirmPassword" type="password"
+                       autocomplete="new-password"
+                       placeholder="Masukkan semula kata laluan"
+                       minlength="6" maxlength="128">
+              </div>
+
+              <div class="form-meta" id="forgotRow">
+                <button class="text-link" type="button" id="forgotButton">
+                  Terlupa kata laluan?
+                </button>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="submitAuth"
+                      type="submit">
+                Log Masuk
+              </button>
+            </form>
+
+            <div class="divider-label">ATAU TERUSKAN DENGAN</div>
+
+            <button class="btn btn-outline btn-block" id="googleButton"
+                    type="button">
+              <span class="google-icon">G</span>
+              Teruskan dengan Google
+            </button>
+
+            <div class="auth-terms">
+              Jangan kongsikan kata laluan anda dengan orang lain.
+              Pastikan anda menggunakan akaun sendiri.
+            </div>
+          </div>
+
+          <!-- PAPARAN SELEPAS BERJAYA LOG MASUK -->
+          <div id="signedInPanel" class="signed-in-panel hidden">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <h3 id="signedInName">Anda telah log masuk</h3>
+            <p id="signedInEmail"></p>
+
+            <div class="account-note">
+              Anda telah berjaya mengesahkan akaun. Halaman ini masih
+              merupakan fasa awal portal. Fungsi pengurusan sekolah akan
+              dibangunkan kemudian.
+            </div>
+
+            <button class="btn btn-primary btn-block" id="homeButton"
+                    type="button">Kembali ke Muka Depan</button>
+            <button class="btn btn-outline btn-block" id="logoutButton"
+                    type="button" style="margin-top:10px">Log Keluar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Selamat datang ke ruang digital sekolah kami.</h2>
+            <p>
+              Asas laman web dibangunkan terlebih dahulu.
+              Fungsi tambahan akan diperkenalkan apabila sedia.
+            </p>
+          </div>
+          <button class="btn btn-gold" type="button" data-open-register>
+            Cipta Akaun →
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-title">SK ABANG GESA</div>
+        <div class="footer-small">
+          96150 Tanjung Manis, Sarawak<br>
+          Laman web sekolah · Fasa 1
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#utama">Utama</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#akaun">Login / Daftar</a>
+      </div>
+      <div class="footer-small">
+        © <span id="year"></span> SK Abang Gesa
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase Authentication -->
+  <script type="module">
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+    import {
+      getAuth,
+      setPersistence,
+      browserLocalPersistence,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
+      onAuthStateChanged,
+      sendPasswordResetEmail,
+      signOut
+    } from
+      "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+    /*
+      LANGKAH KONFIGURASI:
+      Gantikan nilai di bawah menggunakan Firebase Web App Config
+      daripada projek Firebase baharu untuk laman web sekolah.
+
+      Jangan masukkan kata laluan pengguna atau kunci rahsia di sini.
+      Firebase web config bukan kata laluan; keselamatan bergantung pada
+      konfigurasi penyedia, domain yang dibenarkan dan peraturan akses.
+    */
+    const firebaseConfig = {
+  apiKey: "AIzaSyAyqARD9BvxIROapEJgxAvpW5vfUy-10s0",
+  authDomain: "kot2025readonly.firebaseapp.com",
+  projectId: "kot2025readonly",
+  storageBucket: "kot2025readonly.firebasestorage.app",
+  messagingSenderId: "318911784116",
+  appId: "1:318911784116:web:5cbef1e9f2af252f1b23e1"
+};
+
+    const $ = (id) => document.getElementById(id);
+
+    $("year").textContent = new Date().getFullYear();
+
+    const menuToggle = $("menuToggle");
+    const navLinks = $("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label",
+        open ? "Tutup menu" : "Buka menu");
+      menuToggle.textContent = open ? "✕" : "☰";
+    });
+
+    document.querySelectorAll("[data-close-menu]").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    let authMode = "login";
+    let auth = null;
+    let googleProvider = null;
+    let firebaseReady = false;
+    let submitting = false;
+
+    function showMessage(message, type = "info") {
+      const el = $("authMessage");
+      el.textContent = message;
+      el.className = "auth-message show " + type;
+    }
+
+    function clearMessage() {
+      const el = $("authMessage");
+      el.textContent = "";
+      el.className = "auth-message";
+    }
+
+    function setBusy(busy, text = "") {
+      submitting = busy;
+      $("submitAuth").disabled = busy;
+      $("googleButton").disabled = busy;
+      $("forgotButton").disabled = busy;
+      $("submitAuth").style.opacity = busy ? ".65" : "1";
+      $("googleButton").style.opacity = busy ? ".65" : "1";
+
+      if (busy) {
+        $("submitAuth").textContent = text || "Sila tunggu...";
+      } else {
+        updateModeUI();
+      }
+    }
+
+    function updateModeUI() {
+      $("loginTab").classList.toggle("active", authMode === "login");
+      $("registerTab").classList.toggle("active", authMode === "register");
+      $("loginTab").setAttribute("aria-selected",
+        String(authMode === "login"));
+      $("registerTab").setAttribute("aria-selected",
+        String(authMode === "register"));
+
+      $("authTitle").textContent =
+        authMode === "login" ? "Selamat Datang" : "Cipta Akaun";
+      $("authSubtitle").textContent =
+        authMode === "login"
+          ? "Log masuk untuk meneruskan"
+          : "Daftar untuk menyertai portal sekolah";
+      $("submitAuth").textContent =
+        authMode === "login" ? "Log Masuk" : "Daftar Akaun";
+
+      $("confirmField").classList.toggle("hidden",
+        authMode !== "register");
+      $("forgotRow").classList.toggle("hidden",
+        authMode !== "login");
+
+      $("password").autocomplete =
+        authMode === "login" ? "current-password" : "new-password";
+      $("confirmPassword").required = authMode === "register";
+    }
+
+    function switchMode(mode) {
+      authMode = mode;
+      clearMessage();
+      $("authForm").reset();
+      $("password").type = "password";
+      $("confirmPassword").type = "password";
+      $("togglePassword").textContent = "Papar";
+      updateModeUI();
+    }
+
+    $("loginTab").addEventListener("click", () => switchMode("login"));
+    $("registerTab").addEventListener("click", () => switchMode("register"));
+
+    $("togglePassword").addEventListener("click", () => {
+      const input = $("password");
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      $("togglePassword").textContent = show ? "Sembunyi" : "Papar";
+      $("togglePassword").setAttribute("aria-label",
+        show ? "Sembunyikan kata laluan" : "Papar kata laluan");
+    });
+
+    function openAuth(mode) {
+      switchMode(mode);
+      $("authCard").scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => $("email").focus({ preventScroll: true }), 350);
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
+    }
+
+    document.querySelectorAll("[data-open-login]").forEach(btn => {
+      btn.addEventListener("click", () => openAuth("login"));
+    });
+
+    document.querySelectorAll("[data-open-register]").forEach(btn => {
+      btn.addEventListener("click", () => openAuth("register"));
+    });
+
+    $("homeButton").addEventListener("click", () => {
+      $("utama").scrollIntoView({ behavior: "smooth" });
+    });
+
+    function friendlyError(error) {
+      const code = error?.code || "";
+
+      const messages = {
+        "auth/email-already-in-use":
+          "E-mel ini telah didaftarkan. Sila log masuk.",
+        "auth/invalid-email":
+          "Format alamat e-mel tidak sah.",
+        "auth/weak-password":
+          "Kata laluan terlalu lemah. Gunakan sekurang-kurangnya 6 aksara.",
+        "auth/invalid-credential":
+          "E-mel atau kata laluan tidak betul.",
+        "auth/invalid-login-credentials":
+          "E-mel atau kata laluan tidak betul.",
+        "auth/user-not-found":
+          "Akaun tidak ditemui. Sila daftar akaun terlebih dahulu.",
+        "auth/wrong-password":
+          "E-mel atau kata laluan tidak betul.",
+        "auth/too-many-requests":
+          "Terlalu banyak percubaan. Sila cuba semula kemudian.",
+        "auth/popup-closed-by-user":
+          "Tetingkap log masuk Google ditutup sebelum selesai.",
+        "auth/popup-blocked":
+          "Pelayar menyekat tetingkap Google. Cuba benarkan pop-up atau gunakan semula butang Google.",
+        "auth/unauthorized-domain":
+          "Domain laman web ini belum dibenarkan dalam tetapan Firebase Authentication.",
+        "auth/operation-not-allowed":
+          "Kaedah log masuk ini belum diaktifkan dalam Firebase Console.",
+        "auth/network-request-failed":
+          "Masalah rangkaian. Semak sambungan internet dan cuba lagi.",
+        "auth/account-exists-with-different-credential":
+          "E-mel ini telah digunakan dengan kaedah log masuk lain. Cuba kaedah asal.",
+        "auth/credential-already-in-use":
+          "Kelayakan akaun ini sudah digunakan.",
+        "auth/weak-password":
+          "Kata laluan terlalu lemah. Gunakan sekurang-kurangnya 6 aksara."
+      };
+
+      return messages[code] ||
+        "Tindakan tidak berjaya. Sila cuba lagi. Kod ralat: " +
+        (code || "tidak diketahui");
+    }
+
+    $("authForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage();
+
+      if (!firebaseReady || !auth) {
+        showMessage(
+          "Firebase belum dikonfigurasi. Lengkapkan tetapan projek baharu mengikut panduan di bawah kod ini.",
+          "error"
+        );
+        return;
+      }
+
+      if (submitting) return;
+
+      const email = $("email").value.trim();
+      const password = $("password").value;
+      const confirm = $("confirmPassword").value;
+
+      if (!email) {
+        showMessage("Sila masukkan alamat e-mel.", "error");
+        return;
+      }
+
+      if (password.length < 6) {
+        showMessage("Kata laluan mesti sekurang-kurangnya 6 aksara.", "error");
+        return;
+      }
+
+      if (authMode === "register" && password !== confirm) {
+        showMessage("Kata laluan dan pengesahan tidak sepadan.", "error");
+        return;
+      }
+
+      try {
+        setBusy(true, authMode === "login"
+          ? "Sedang log masuk..." : "Mencipta akaun...");
+
+        if (authMode === "register") {
+          await createUserWithEmailAndPassword(auth, email, password);
+          // Firebase akan mengesahkan pengguna secara automatik.
+          // E-mel pengesahan boleh diwajibkan dalam fasa seterusnya.
+          showMessage("Pendaftaran berjaya. Anda telah log masuk.", "success");
+        } else {
+          await signInWithEmailAndPassword(auth, email, password);
+          showMessage("Log masuk berjaya.", "success");
+        }
+      } catch (error) {
+        showMessage(friendlyError(error), "error");
+      } finally {
+        setBusy(false);
+      }
+    });
+
+    $("googleButton").addEventListener("click", async () => {
+      clearMessage();
+
+      if (!firebaseReady || !auth || !googleProvider) {
+        showMessage(
+          "Log masuk Google belum tersedia. Lengkapkan konfigurasi Firebase terlebih dahulu.",
+          "error"
+        );
+        return;
+      }
+
+      if (submitting) return;
+
+      try {
+        setBusy(true, "Menyambung ke Google...");
+
+        try {
+          await signInWithPopup(auth, googleProvider);
+        } catch (popupError) {
+          // Cuba redirect jika popup disekat oleh pelayar.
+          if (popupError.code === "auth/popup-blocked") {
+            await signInWithRedirect(auth, googleProvider);
+          } else {
+            throw popupError;
+          }
+        }
+      } catch (error) {
+        showMessage(friendlyError(error), "error");
+      } finally {
+        setBusy(false);
+      }
+    });
+
+    $("forgotButton").addEventListener("click", async () => {
+      clearMessage();
+
+      if (!firebaseReady || !auth) {
+        showMessage("Lengkapkan konfigurasi Firebase terlebih dahulu.", "error");
+        return;
+      }
+
+      const email = $("email").value.trim();
+
+      if (!email) {
+        showMessage(
+          "Masukkan alamat e-mel dalam ruangan e-mel terlebih dahulu.",
+          "info"
+        );
+        $("email").focus();
+        return;
+      }
+
+      try {
+        $("forgotButton").disabled = true;
+        await sendPasswordResetEmail(auth, email);
+        showMessage(
+          "Jika alamat ini berdaftar, e-mel pemulihan akan dihantar. Semak peti masuk dan folder spam.",
+          "success"
+        );
+      } catch (error) {
+        showMessage(friendlyError(error), "error");
+      } finally {
+        $("forgotButton").disabled = false;
+      }
+    });
+
+    $("logoutButton").addEventListener("click", async () => {
+      if (!auth) return;
+
+      try {
+        await signOut(auth);
+        showMessage("Anda telah log keluar.", "success");
+      } catch (error) {
+        showMessage(friendlyError(error), "error");
+      }
+    });
+
+    function showSignedIn(user) {
+      $("authForms").classList.add("hidden");
+      $("signedInPanel").classList.remove("hidden");
+      $("authTitle").textContent = "Akaun Anda";
+      $("authSubtitle").textContent = "Status log masuk";
+      $("authMessage").className = "auth-message";
+
+      const email = user.email || "Akaun Google";
+      $("signedInEmail").textContent = email;
+      $("signedInName").textContent =
+        user.displayName || "Anda telah log masuk";
+
+      const avatar = $("userAvatar");
+      avatar.replaceChildren();
+
+      if (user.photoURL) {
+        const img = document.createElement("img");
+        img.src = user.photoURL;
+        img.alt = "Foto profil";
+        img.referrerPolicy = "no-referrer";
+        avatar.appendChild(img);
+      } else {
+        avatar.textContent = (user.displayName || email || "U")
+          .trim().charAt(0).toUpperCase();
+      }
+    }
+
+    function showSignedOut() {
+      $("authForms").classList.remove("hidden");
+      $("signedInPanel").classList.add("hidden");
+      updateModeUI();
+    }
+
+    // Jangan benarkan pengguna menganggap login berjaya jika konfigurasi
+    // Firebase masih menggunakan nilai contoh.
+    const configReady =
+      firebaseConfig.apiKey &&
+      firebaseConfig.apiKey !== "GANTI_DENGAN_API_KEY" &&
+      firebaseConfig.authDomain &&
+      !firebaseConfig.authDomain.includes("GANTI_DENGAN") &&
+      firebaseConfig.projectId &&
+      firebaseConfig.projectId !== "GANTI_DENGAN_PROJECT_ID" &&
+      firebaseConfig.appId &&
+      firebaseConfig.appId !== "GANTI_DENGAN_APP_ID";
+
+    if (configReady) {
+      try {
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        googleProvider = new GoogleAuthProvider();
+        googleProvider.setCustomParameters({ prompt: "select_account" });
+
+        await setPersistence(auth, browserLocalPersistence);
+        firebaseReady = true;
+
+        try {
+          await getRedirectResult(auth);
+        } catch (error) {
+          showMessage(friendlyError(error), "error");
+        }
+
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            showSignedIn(user);
+          } else {
+            showSignedOut();
+          }
+        });
+      } catch (error) {
+        console.error("Firebase initialization error:", error);
+        showMessage(
+          "Firebase gagal dimulakan. Semak konfigurasi projek dan sambungan internet.",
+          "error"
+        );
+      }
+    } else {
+      // Paparan laman tetap boleh digunakan sebelum Firebase dikonfigurasi.
+      console.info(
+        "Firebase belum dikonfigurasi. Muka depan boleh dipaparkan, tetapi login belum aktif."
+      );
+    }
+
+    updateModeUI();
+  </script>
+</body>
+</html>
