@@ -753,6 +753,88 @@
       border: 1px solid #cfe2ff;
     }
 
+
+    /* NOTIFIKASI TERAPUNG: mudah dilihat selepas tindakan pengguna */
+    .site-toast {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 9999;
+      width: min(430px, calc(100vw - 36px));
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 18px;
+      border: 1px solid #cfe2ff;
+      border-radius: 15px;
+      background: #ffffff;
+      color: #184b87;
+      box-shadow: 0 18px 50px rgba(11, 41, 66, .22);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity .22s ease, transform .22s ease, visibility .22s;
+      font-size: 13px;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .site-toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .site-toast.success {
+      color: #087443;
+      background: #f0fff6;
+      border-color: #a9e8c4;
+    }
+
+    .site-toast.error {
+      color: #a61b14;
+      background: #fff5f3;
+      border-color: #f4b8b1;
+    }
+
+    .site-toast.info {
+      color: #184b87;
+      background: #f4f8ff;
+      border-color: #cfe2ff;
+    }
+
+    .site-toast-icon {
+      flex: 0 0 27px;
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: currentColor;
+      color: white;
+      font-size: 15px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .site-toast-content { flex: 1; min-width: 0; }
+    .site-toast-title { display: block; font-weight: 900; margin-bottom: 3px; }
+    .site-toast-close {
+      flex: 0 0 auto;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: 20px;
+      line-height: 1;
+      padding: 0 0 4px 4px;
+      opacity: .75;
+    }
+    .site-toast-close:hover { opacity: 1; }
+
+    @media (max-width: 600px) {
+      .site-toast { top: 10px; right: 10px; width: calc(100vw - 20px); }
+    }
+
     .divider-label {
       display: flex;
       align-items: center;
@@ -975,6 +1057,14 @@
 </head>
 
 <body>
+  <div id="siteToast" class="site-toast info" role="status" aria-live="polite" aria-atomic="true">
+    <span class="site-toast-icon" id="siteToastIcon" aria-hidden="true">i</span>
+    <div class="site-toast-content">
+      <strong class="site-toast-title" id="siteToastTitle">Makluman</strong>
+      <span id="siteToastText"></span>
+    </div>
+    <button type="button" class="site-toast-close" id="siteToastClose" aria-label="Tutup notifikasi">×</button>
+  </div>
   <div class="topbar">
     <div class="container topbar-inner">
       <span>📍 96150 Tanjung Manis, Sarawak</span>
@@ -1349,6 +1439,39 @@
       el.className = "auth-message";
     }
 
+    let toastTimer = null;
+
+    function showToast(message, type = "info", title = "") {
+      const toast = $("siteToast");
+      const icon = $("siteToastIcon");
+      const titleEl = $("siteToastTitle");
+      const textEl = $("siteToastText");
+
+      const settings = {
+        success: { icon: "✓", title: "Berjaya" },
+        error: { icon: "!", title: "Tidak Berjaya" },
+        info: { icon: "i", title: "Makluman" }
+      };
+      const selected = settings[type] || settings.info;
+
+      toast.className = "site-toast " + type;
+      icon.textContent = selected.icon;
+      titleEl.textContent = title || selected.title;
+      textEl.textContent = message;
+      toast.classList.add("show");
+
+      if (toastTimer) window.clearTimeout(toastTimer);
+      const duration = type === "error" ? 9000 : (type === "success" ? 7500 : 5500);
+      toastTimer = window.setTimeout(() => {
+        toast.classList.remove("show");
+      }, duration);
+    }
+
+    $("siteToastClose").addEventListener("click", () => {
+      $("siteToast").classList.remove("show");
+      if (toastTimer) window.clearTimeout(toastTimer);
+    });
+
     function setBusy(busy, text = "") {
       submitting = busy;
       $("submitAuth").disabled = busy;
@@ -1567,32 +1690,52 @@
       clearMessage();
 
       if (!firebaseReady || !auth) {
-        showMessage("Lengkapkan konfigurasi Firebase terlebih dahulu.", "error");
+        const message = "Sambungan akaun belum tersedia. Sila muat semula halaman atau cuba sebentar lagi.";
+        showMessage(message, "error");
+        showToast(message, "error", "Sambungan Tidak Tersedia");
         return;
       }
 
       const email = $("email").value.trim();
 
       if (!email) {
-        showMessage(
-          "Masukkan alamat e-mel dalam ruangan e-mel terlebih dahulu.",
-          "info"
-        );
+        const message = "Masukkan alamat e-mel anda dalam ruangan e-mel terlebih dahulu.";
+        showMessage(message, "info");
+        showToast(message, "info", "E-mel Diperlukan");
         $("email").focus();
         return;
       }
 
+      const button = $("forgotButton");
+      const originalText = button.textContent;
+
       try {
-        $("forgotButton").disabled = true;
+        button.disabled = true;
+        button.textContent = "Menghantar...";
+        showToast(
+          "Permintaan sedang diproses. Sila tunggu sebentar.",
+          "info",
+          "Sedang Memproses"
+        );
+
         await sendPasswordResetEmail(auth, email);
-        showMessage(
-          "Jika alamat ini berdaftar, e-mel pemulihan akan dihantar. Semak peti masuk dan folder spam.",
-          "success"
+
+        const successMessage =
+          "Permintaan berjaya dihantar. Jika alamat ini berdaftar, e-mel pemulihan akan diterima. Semak peti masuk dan folder Spam.";
+        showMessage(successMessage, "success");
+        showToast(
+          "Permintaan berjaya dihantar. Sila semak peti masuk dan folder Spam untuk pautan tetapan semula kata laluan.",
+          "success",
+          "E-mel Pemulihan Diminta"
         );
       } catch (error) {
-        showMessage(friendlyError(error), "error");
+        const message = friendlyError(error);
+        showMessage(message, "error");
+        showToast(message, "error", "Permintaan Gagal");
+        console.error("Password reset request failed:", error);
       } finally {
-        $("forgotButton").disabled = false;
+        button.disabled = false;
+        button.textContent = originalText;
       }
     });
 
